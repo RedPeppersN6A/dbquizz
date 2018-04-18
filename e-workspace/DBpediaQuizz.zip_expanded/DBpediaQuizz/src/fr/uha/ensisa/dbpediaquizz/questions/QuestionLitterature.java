@@ -7,9 +7,9 @@ import org.apache.jena.query.QuerySolution;
 import fr.uha.ensisa.dbpediaquizz.util.Constantes;
 import fr.uha.ensisa.dbpediaquizz.util.DBpediaQuery;
 
-public class QuestionLiterature extends Question {
+public class QuestionLitterature extends Question {
 
-	public QuestionLiterature()
+	public QuestionLitterature()
 	{
 		super(Constantes.LITTERATURE);
 		//Récupère toutes les capitales

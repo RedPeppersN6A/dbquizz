@@ -4,7 +4,7 @@ public class QuestionFactory {
 
 	public static Question createQuestion()
 	{
-		int questionType= (int)(Math.random()*4);
+		int questionType= (int)(Math.random()*5);
 		Question question;
 		switch(questionType)
 		{
@@ -14,7 +14,10 @@ public class QuestionFactory {
 						break;			
 			case 2 : 	question= new QuestionChampionnatFranceFootball();
 						break;
-			default :	question= new QuestionChanteur();
+			case 3 :	question= new QuestionChanteur();
+						break;
+			default :   question= new QuestionLitterature();
+			
 		}
 		//question= new QuestionChampionnatFranceFootball();
 		//question=new QuestionCapitale();
