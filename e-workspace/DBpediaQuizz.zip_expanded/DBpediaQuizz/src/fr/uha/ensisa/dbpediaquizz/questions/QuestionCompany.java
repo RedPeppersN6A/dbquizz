@@ -13,11 +13,12 @@ public class QuestionCompany extends Question {
 	{
 		super(Constantes.SOCIETE);
 		//Récupère toutes les dates de création des companies répertoriés
-		String requete = "select distinct ?nomCompany ?Year where {?Company a <http://dbpedia.org/ontology/Company>. "
-																		+ "?Company <http://fr.dbpedia.org/property/dateDeCréation> ?Year. "
-																		+ "?Company <http://fr.dbpedia.org/property/nom> ?nomCompany. "
-																		+ "FILTER (datatype(?Year) = xsd:integer). "
-																		+ "FILTER (lang(?nomCompany) = 'fr')}";
+		String requete = "PREFIX xsd:<http://www.w3.org/2001/XMLSchema#>"
+									+ "select distinct ?nomCompany ?Year where {?Company a <http://dbpedia.org/ontology/Company>. "
+									+ "?Company <http://fr.dbpedia.org/property/dateDeCréation> ?Year. "
+									+ "?Company <http://fr.dbpedia.org/property/nom> ?nomCompany. "
+									+ "FILTER (datatype(?Year) = xsd:integer). "
+									+ "FILTER (lang(?nomCompany) = 'fr')}";
 		List<QuerySolution> company = DBpediaQuery.execRequete(requete);
 		QuerySolution ligne = company.get((int)(Math.random()*company.size()));
 
@@ -30,7 +31,7 @@ public class QuestionCompany extends Question {
 			while(index<Constantes.NB_REPONSES-1)
 			{
 				ligne = company.get((int)(Math.random()*company.size()));
-				if(reponseAbsente(ligne.getLiteral("?Yeear").getString()))
+				if(reponseAbsente(ligne.getLiteral("?Year").getString()))
 				{
 					this.mauvaisesReponses[index]=ligne.getLiteral("?Year").getString();
 					index++;
