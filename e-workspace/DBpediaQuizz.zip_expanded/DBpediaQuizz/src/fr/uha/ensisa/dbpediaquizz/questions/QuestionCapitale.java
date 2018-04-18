@@ -12,7 +12,7 @@ public class QuestionCapitale extends Question {
 	public QuestionCapitale()
 	{
 		super(Constantes.GEOGRAPHIE);
-		//Récupère toutes les capitales
+		//RÃ©cupÃ¨re toutes les capitales
 		String requete = "select ?nomPays ?nomVille where {?pays <http://dbpedia.org/ontology/capital> ?ville. "
 				+ "?pays <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://dbpedia.org/ontology/Country>. "
 				+ "?pays <http://www.w3.org/2000/01/rdf-schema#label> ?nomPays. "

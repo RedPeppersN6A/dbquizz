@@ -25,7 +25,7 @@ public class QuestionChampionnatFranceFootball extends Question {
 
 
 
-			this.enonce = "Quelle équipe a gagné le "+ligne.getLiteral("?nomTournoi").getString()+" ?";
+			this.enonce = "Quelle Ã©quipe a gagnÃ© le "+ligne.getLiteral("?nomTournoi").getString()+" ?";
 			this.bonneReponse= ligne.getLiteral("?nomVainqueur").getString();
 
 			int index=0;

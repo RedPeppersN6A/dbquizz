@@ -20,7 +20,7 @@ public abstract class Question {
 	
 	public int ask(Scanner entry)
 	{
-		//Place les réponses dans le désordre
+		//Place les rÃ©ponses dans le dÃ©sordre
 		String[] reponses= new String[4];
 		Arrays.fill(reponses, null);
 		int bonneReponseIndex = (int)(Math.random()*Constantes.NB_REPONSES);
@@ -35,21 +35,21 @@ public abstract class Question {
 				mauvaisesReponsesPlacees++;
 			}
 		}
-		// Affiche questions + réponses
+		// Affiche questions + rÃ©ponses
 		System.out.println("Question de "+Constantes.CATEGORIES[this.categorie]);
 		System.out.println(enonce);
 		for(int i=0;i<Constantes.NB_REPONSES;i++)
 		{
 			System.out.println((i+1)+") "+reponses[i]);
 		}
-		// Demande Ã  l'utilisateur sa réponse
+		// Demande Ã  l'utilisateur sa rï¿½ponse
 		System.out.print("Votre choix : ");
 		int choix;
 		do{
 			choix=entry.nextInt();
 		}while(choix<1||choix>Constantes.NB_QUESTIONS);
 		int score=0;
-		// Analyse de la réponse
+		// Analyse de la rï¿½ponse
 		if(choix==bonneReponseIndex+1)
 		{
 			System.out.println("BRAVO VOUS AVEZ TROUVE LA BONNE REPONSE !");

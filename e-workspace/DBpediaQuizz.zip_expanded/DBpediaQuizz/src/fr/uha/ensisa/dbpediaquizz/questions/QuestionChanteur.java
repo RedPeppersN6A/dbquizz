@@ -11,30 +11,29 @@ public class QuestionChanteur extends Question {
 
 	public QuestionChanteur()
 	{
-		super(Constantes.GEOGRAPHIE);
-		//Récupère toutes les capitales
-		String requete = "select ?nomPays ?nomVille where {?pays <http://dbpedia.org/ontology/capital> ?ville. "
-				+ "?pays <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://dbpedia.org/ontology/Country>. "
-				+ "?pays <http://www.w3.org/2000/01/rdf-schema#label> ?nomPays. "
-				+ "?ville <http://www.w3.org/2000/01/rdf-schema#label> ?nomVille. "
-				+ "FILTER (lang(?nomPays) = 'fr') "
-				+ "FILTER (lang(?nomVille) = 'fr')}";
-		List<QuerySolution> capitales = DBpediaQuery.execRequete(requete);
-		QuerySolution ligne = capitales.get((int)(Math.random()*capitales.size()));
+		super(Constantes.MUSIQUE);
+		//Récupère toute les chanteurs et chansons
+		String requete = "select distinct ?nomSinger ?nomSingle where {?singer <http://dbpedia.org/ontology/artist> ?single. "
+				+ "?singer <http://www.w3.org/2000/01/rdf-schema#label> ?nomSinger. "
+				+ "?single <http://www.w3.org/2000/01/rdf-schema#label> ?nomSingle. "
+				+ "FILTER (lang(?nomSingle) = 'fr') "
+				+ "FILTER (lang(?nomSinger) = 'fr')}";
+		List<QuerySolution> chanteurs = DBpediaQuery.execRequete(requete);
+		QuerySolution ligne = chanteurs.get((int)(Math.random()*chanteurs.size()));
 
 		if(Math.random()<0.5)
 		{
 
-			this.enonce = "Quelle est la capitale de "+ligne.getLiteral("?nomPays").getString()+" ?";
-			this.bonneReponse= ligne.getLiteral("?nomVille").getString();
+			this.enonce = "Qui a chanté cette chanson : "+ligne.getLiteral("?nomSingle").getString()+" ?";
+			this.bonneReponse= ligne.getLiteral("?nomSinger").getString();
 
 			int index=0;
 			while(index<Constantes.NB_REPONSES-1)
 			{
-				ligne = capitales.get((int)(Math.random()*capitales.size()));
-				if(reponseAbsente(ligne.getLiteral("?nomVille").getString()))
+				ligne = chanteurs.get((int)(Math.random()*chanteurs.size()));
+				if(reponseAbsente(ligne.getLiteral("?nomSinger").getString()))
 				{
-					this.mauvaisesReponses[index]=ligne.getLiteral("?nomVille").getString();
+					this.mauvaisesReponses[index]=ligne.getLiteral("?nomSinger").getString();
 					index++;
 				}
 			}
@@ -42,16 +41,16 @@ public class QuestionChanteur extends Question {
 		else
 		{
 
-			this.enonce = "De quoi "+ligne.getLiteral("?nomVille").getString()+" est la capitale ?";
-			this.bonneReponse= ligne.getLiteral("?nomPays").getString();
+			this.enonce = "Quel chanson a chanté "+ligne.getLiteral("?nomSinger").getString()+" ?";
+			this.bonneReponse= ligne.getLiteral("?nomSingle").getString();
 
 			int index=0;
 			while(index<Constantes.NB_REPONSES-1)
 			{
-				ligne = capitales.get((int)(Math.random()*capitales.size()));
-				if(!this.bonneReponse.equalsIgnoreCase(ligne.getLiteral("?nomPays").getString()))
+				ligne = chanteurs.get((int)(Math.random()*chanteurs.size()));
+				if(!this.bonneReponse.equalsIgnoreCase(ligne.getLiteral("?nomSingle").getString()))
 				{
-					this.mauvaisesReponses[index]=ligne.getLiteral("?nomPays").getString();
+					this.mauvaisesReponses[index]=ligne.getLiteral("?nomSingle").getString();
 					index++;
 				}
 			}
