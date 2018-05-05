@@ -4,7 +4,7 @@ public class QuestionFactory {
 
 	public static Question createQuestion()
 	{
-		int questionType= (int)(Math.random()*8);
+		int questionType= (int)(Math.random()*7);
 		Question question;
 		switch(questionType)
 		{
