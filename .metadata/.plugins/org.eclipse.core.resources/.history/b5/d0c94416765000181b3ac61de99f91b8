@@ -31,12 +31,12 @@ public class QuestionCoordonnees extends Question{
 		String[] pos2=ligne2.getLiteral("?pos").getString().split(" ");
 		double lat2= Double.parseDouble(pos2[0]);
 		double long2= Double.parseDouble(pos2[1]);
-		double dist=1852*60*Math.acos(Math.sin(lat1)*Math.sin(lat2)+Math.cos(lat1)*Math.cos(lat2)*Math.cos(long1- long2));
-		//1852: convertion de mille marin à metre
+		double dist=60*Math.acos(Math.sin(lat1)*Math.sin(lat2)+Math.cos(lat1)*Math.cos(lat2)*Math.cos(long1- long2));
+			
 		if(Math.random()<0.5)
 		{
 			this.enonce = "Quel et la distance entre "+ligne1.getLiteral("?nomVille").getString()+" et" +ligne2.getLiteral("?nomVille").getString()+ "?";
-			this.bonneReponse=""+ (int) dist;
+			this.bonneReponse=""+ dist;
 
 			int index=0;
 			while(index<Constantes.NB_REPONSES-1)
@@ -44,7 +44,7 @@ public class QuestionCoordonnees extends Question{
 				//ligne1 = locVille.get((int)(Math.random()*locVille.size()));
 				if(reponseAbsente(ligne1.getLiteral("?titre").getString()))
 				{
-					this.mauvaisesReponses[index]= ((int)(Math.random()*2*10000000)) + "";//2*10^7 arc recouvrant la moitier de la terre
+					this.mauvaisesReponses[index]=(Math.random()*2*10000000) + "";//2*10^7 arc recouvrant la moitier de la terre
 					index++;
 				}
 			}
@@ -52,7 +52,7 @@ public class QuestionCoordonnees extends Question{
 		else
 		{
 
-			this.enonce = "Quel ville se trouve à "+ (int) dist + "m de la ville "+ ligne1.getLiteral("?nomVille").getString()+" ?";
+			this.enonce = "Quel ville se trouve à "+ dist + "m de la ville "+ ligne1.getLiteral("?nomVille").getString()+" ?";
 			this.bonneReponse= ligne2.getLiteral("?nomVille").getString();
 
 			int index=0;
