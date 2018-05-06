@@ -12,17 +12,15 @@ public class QuestionLitterature extends Question {
 	public QuestionLitterature()
 	{
 		super(Constantes.LITTERATURE);
-		//Récupère toutes les capitales
+		//RÃ©cupÃ¨re tous les livres et auteur
 		String requete = "PREFIX dbo:<http://dbpedia.org/ontology/> "
-							+"PREFIX dbr:<http://dbpedia.org/resource>"
-							+ "select ?titre ?auteur"
-							+ "WHERE{ ?book a dbo:Book . "
-								+ "?book rdfs:label ?titre . "
-								+ "?book dbpedia-owl:author ?auteurlong ."
-								+ "?auteurlong rdfs:label ?auteur"
-								+ "FILTER(lang(?titre) ='fr')"
-								+ "FILTER(lang(?auteur) ='fr')"
-							+"}";
+							+"select ?titre ?auteur "
+							+"WHERE{ ?book a <http://dbpedia.org/ontology/Book>. "
+								+ "?book <http://www.w3.org/2000/01/rdf-schema#label> ?titre. "
+								+ "?book <http://dbpedia.org/ontology/author> ?auteurlong. "
+								+ "?auteurlong <http://www.w3.org/2000/01/rdf-schema#label> ?auteur "
+								+ "FILTER(lang(?titre) ='fr')."
+								+ "FILTER(lang(?auteur) ='fr')}";
 		List<QuerySolution> capitales = DBpediaQuery.execRequete(requete);
 		QuerySolution ligne = capitales.get((int)(Math.random()*capitales.size()));
 
@@ -46,7 +44,7 @@ public class QuestionLitterature extends Question {
 		else
 		{
 
-			this.enonce = "Qu'as écrit "+ligne.getLiteral("?titre").getString()+" ?";
+			this.enonce = "Qu'as ï¿½crit "+ligne.getLiteral("?titre").getString()+" ?";
 			this.bonneReponse= ligne.getLiteral("?auteur").getString();
 
 			int index=0;

@@ -21,6 +21,6 @@ public abstract class Constantes {
 	public static final int COORDONNEE=6;
 	public static final int FLORE=7;
 	
-	public static final String[] CATEGORIES = {"Géographie", "Histoire", "Sport","Musique","Litterature","Société","Coordonn�es","Flore"};
+	public static final String[] CATEGORIES = {"Géographie", "Histoire", "Sport","Musique","Litterature","Société","Coordonnées","Flore"};
 
 }
