@@ -8,7 +8,7 @@ public abstract class Constantes {
 	public static final int NB_QUESTIONS=15;
 	
 	/**
-	 * Nombre de r�ponses propos�es pour chaque question
+	 * Nombre de r�ponses proposées pour chaque question
 	 */
 	public static final int NB_REPONSES=4;
 	
@@ -19,8 +19,7 @@ public abstract class Constantes {
 	public static final int LITTERATURE=4;
 	public static final int SOCIETE=5;
 	public static final int COORDONNEE=6;
-	public static final int FLORE=7;
+	public static final int FICTION=7;
 	
-	public static final String[] CATEGORIES = {"Géographie", "Histoire", "Sport","Musique","Litterature","Société","Coordonnées","Flore"};
-
+	public static final String[] CATEGORIES = {"Géographie", "Histoire", "Sport","Musique","Litterature","Société","Coordonnées","Fiction"};
 }

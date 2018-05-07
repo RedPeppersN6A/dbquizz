@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.paint.*?>
+<?import javafx.scene.shape.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="fr.uha.ensisa.dbpediaquizz.view.QuestionOverviewController">
+   <children>
+      <SplitPane dividerPositions="0.2709030100334448" prefHeight="300.0" prefWidth="400.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+        <items>
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="298.0" prefWidth="132.0">
+               <children>
+                  <TabPane layoutX="-4.0" prefHeight="398.0" prefWidth="198.0" tabClosingPolicy="UNAVAILABLE" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                    <tabs>
+                      <Tab text="Menu">
+                           <content>
+                              <Pane>
+                                 <children>
+                                    <Button fx:id="nouvellePartieB" layoutX="10.0" layoutY="34.0" mnemonicParsing="false" onAction="#begin" prefWidth="140.0" text="Nouvelle Partie" />
+                                    <Button fx:id="quitterB" layoutX="10.0" layoutY="69.0" mnemonicParsing="false" onAction="#Quit" prefWidth="140.0" text="Quitter" />
+                                    <ProgressBar fx:id="starting" layoutX="10.0" layoutY="346.0" prefHeight="18.0" prefWidth="137.0" progress="0.0" />
+                                 </children>
+                              </Pane>
+                           </content>
+                        </Tab>
+                      <Tab text="Préférences">
+                           <content>
+                              <Pane>
+                                 <children>
+                                    <Label layoutX="6.0" layoutY="1.0" prefHeight="27.0" prefWidth="150.0" text="Nbr de Questions" />
+                                    <Slider fx:id="categoryS" blockIncrement="1.0" layoutX="10.0" layoutY="27.0" max="40.0" min="10.0" onMouseDragged="#slide" prefHeight="14.0" prefWidth="100.0" value="10.0" />
+                                    <Line endX="150.0" fill="BLACK" layoutY="50.0" stroke="#949494" />
+                                    <Label fx:id="nbrQuestionsLabel" layoutX="117.0" layoutY="26.0" text="Label" />
+                                 </children>
+                              </Pane>
+                           </content>
+                        </Tab>
+                    </tabs>
+                  </TabPane>
+               </children>
+            </AnchorPane>
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
+               <children>
+                  <Pane layoutX="7.0" prefHeight="421.0" prefWidth="426.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                     <children>
+                        <Text fontSmoothingType="LCD" layoutY="19.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Bienvenue sur DBPediaQuizz" textAlignment="CENTER" wrappingWidth="426.0">
+                           <font>
+                              <Font name="Calibri" size="18.0" />
+                           </font>
+                        </Text>
+                        <GridPane layoutX="8.0" layoutY="38.0" prefHeight="347.0" prefWidth="409.0">
+                          <columnConstraints>
+                            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                          </columnConstraints>
+                          <rowConstraints>
+                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                          </rowConstraints>
+                           <children>
+                              <Text fontSmoothingType="LCD" strokeType="OUTSIDE" strokeWidth="0.0" text="Catégorie :" GridPane.rowIndex="1">
+                                 <font>
+                                    <Font size="16.0" />
+                                 </font>
+                              </Text>
+                              <Label fx:id="categoryLabel" alignment="CENTER_RIGHT" contentDisplay="RIGHT" prefHeight="25.0" prefWidth="218.0" text="Label" textAlignment="JUSTIFY" textFill="#000968" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                                 <font>
+                                    <Font size="16.0" />
+                                 </font>
+                              </Label>
+                              <Text fontSmoothingType="LCD" strokeType="OUTSIDE" strokeWidth="0.0" text="Enonce :" GridPane.rowIndex="2">
+                                 <font>
+                                    <Font size="16.0" />
+                                 </font>
+                              </Text>
+                              <Label fx:id="enonceLabel" alignment="CENTER" contentDisplay="CENTER" prefHeight="82.0" prefWidth="204.0" text="Label" textAlignment="JUSTIFY" textFill="#001a80" wrapText="true" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                                 <font>
+                                    <Font name="System Bold" size="12.0" />
+                                 </font></Label>
+                              <RadioButton fx:id="reponseRB00" mnemonicParsing="false" prefHeight="75.0" prefWidth="208.0" text="RadioButton" textFill="#a16900" GridPane.rowIndex="3" />
+                              <RadioButton fx:id="reponseRB10" layoutX="10.0" layoutY="160.0" mnemonicParsing="false" prefHeight="75.0" prefWidth="208.0" text="RadioButton" textFill="#a16900" GridPane.rowIndex="4" />
+                              <RadioButton fx:id="reponseRB01" layoutX="10.0" layoutY="160.0" mnemonicParsing="false" prefHeight="75.0" prefWidth="208.0" text="RadioButton" textFill="#a16900" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                              <RadioButton fx:id="reponseRB11" layoutX="10.0" layoutY="235.0" mnemonicParsing="false" prefHeight="75.0" prefWidth="208.0" text="RadioButton" textFill="#a16900" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+                              <Label fx:id="bonneReponseLabel" alignment="CENTER" prefHeight="69.0" prefWidth="221.0" text="Label" textFill="#000968" wrapText="true" GridPane.columnIndex="1" GridPane.rowIndex="6" />
+                              <Text strokeType="OUTSIDE" strokeWidth="0.0" text="La bonne réponse était :" wrappingWidth="206.13671875" GridPane.rowIndex="6">
+                                 <font>
+                                    <Font size="14.0" />
+                                 </font>
+                              </Text>
+                              <Label fx:id="resultatLabel" prefHeight="58.0" prefWidth="220.0" text="Label" wrapText="true" GridPane.rowIndex="5" />
+                              <Text fontSmoothingType="LCD" strokeType="OUTSIDE" strokeWidth="0.0" text="Question :" wrappingWidth="122.888671875" />
+                              <Label fx:id="avancementLabel" alignment="CENTER_RIGHT" contentDisplay="RIGHT" prefHeight="50.0" prefWidth="234.0" text="Label" textAlignment="JUSTIFY" textFill="#000968" />
+                           </children>
+                        </GridPane>
+                        <Button fx:id="questionSuivanteB" layoutX="305.0" layoutY="385.0" mnemonicParsing="false" onAction="#nextQuestion" text="Question suivante" />
+                        <Button fx:id="validerB" layoutX="14.0" layoutY="385.0" mnemonicParsing="false" onAction="#validate" text="Valider" />
+                     </children>
+                  </Pane>
+               </children>
+            </AnchorPane>
+        </items>
+      </SplitPane>
+      <Label layoutX="17.0" layoutY="406.0" text="By NOIREAU &amp; LETAIF" />
+   </children>
+   <padding>
+      <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+   </padding>
+</AnchorPane>

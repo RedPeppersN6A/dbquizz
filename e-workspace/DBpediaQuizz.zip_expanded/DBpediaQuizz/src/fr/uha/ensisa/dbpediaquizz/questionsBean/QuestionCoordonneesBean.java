@@ -1,4 +1,4 @@
-package fr.uha.ensisa.dbpediaquizz.questions;
+package fr.uha.ensisa.dbpediaquizz.questionsBean;
 
 import java.util.List;
 
@@ -6,11 +6,12 @@ import org.apache.jena.query.QuerySolution;
 
 import fr.uha.ensisa.dbpediaquizz.util.Constantes;
 import fr.uha.ensisa.dbpediaquizz.util.DBpediaQuery;
+import javafx.beans.property.SimpleStringProperty;
 
-public class QuestionCoordonnees extends Question{
+public class QuestionCoordonneesBean extends QuestionBean {
 	
 	
-	public QuestionCoordonnees()
+	public QuestionCoordonneesBean()
 	{
 		super(Constantes.COORDONNEE);
 		//R�cup�re toutes les capitales et leur coordonn�es
@@ -39,7 +40,7 @@ public class QuestionCoordonnees extends Question{
 		
 		if(Math.random()<0.5)
 		{
-			this.enonce = "Quel est la distance entre "+ligne1.getLiteral("?nomVille").getString()+" et" +ligne2.getLiteral("?nomVille").getString()+ "?";
+			this.enonce = new SimpleStringProperty("Quel est la distance entre "+ligne1.getLiteral("?nomVille").getString()+" et" +ligne2.getLiteral("?nomVille").getString()+ "?");
 			this.bonneReponse=String.valueOf(dist);
 
 			int index=0;
@@ -56,7 +57,7 @@ public class QuestionCoordonnees extends Question{
 		else
 		{
 
-			this.enonce = "Quel ville se trouve à "+ (int) dist + "m de la ville "+ ligne1.getLiteral("?nomVille").getString()+" ?";
+			this.enonce = new SimpleStringProperty("Quel ville se trouve à "+ (int) dist + "m de la ville "+ ligne1.getLiteral("?nomVille").getString()+" ?");
 			this.bonneReponse= ligne2.getLiteral("?nomVille").getString();
 
 			int index=0;

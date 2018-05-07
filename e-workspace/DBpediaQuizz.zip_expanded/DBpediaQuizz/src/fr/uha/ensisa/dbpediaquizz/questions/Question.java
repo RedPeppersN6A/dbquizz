@@ -61,7 +61,7 @@ public abstract class Question {
 		}
 		return score;
 	}
-	
+
 	protected boolean reponseAbsente(String nouvelleReponse)
 	{
 		boolean absent=true;
@@ -81,7 +81,4 @@ public abstract class Question {
 		}
 		return absent;
 	}
-
-	
-
 }

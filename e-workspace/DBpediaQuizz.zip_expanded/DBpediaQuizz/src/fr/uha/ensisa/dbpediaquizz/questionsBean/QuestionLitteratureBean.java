@@ -1,4 +1,4 @@
-package fr.uha.ensisa.dbpediaquizz.questions;
+package fr.uha.ensisa.dbpediaquizz.questionsBean;
 
 import java.util.List;
 
@@ -6,10 +6,11 @@ import org.apache.jena.query.QuerySolution;
 
 import fr.uha.ensisa.dbpediaquizz.util.Constantes;
 import fr.uha.ensisa.dbpediaquizz.util.DBpediaQuery;
+import javafx.beans.property.SimpleStringProperty;
 
-public class QuestionLitterature extends Question {
+public class QuestionLitteratureBean extends QuestionBean {
 
-	public QuestionLitterature()
+	public QuestionLitteratureBean()
 	{
 		super(Constantes.LITTERATURE);
 		//Récupère tous les livres et auteur
@@ -26,7 +27,7 @@ public class QuestionLitterature extends Question {
 		if(Math.random()<0.5)
 		{
 
-			this.enonce = "Qu'as ecrit "+ligne.getLiteral("?auteur").getString()+" parmit les livre suivant?";
+			this.enonce = new SimpleStringProperty("Qu'as ecrit "+ligne.getLiteral("?auteur").getString()+" parmit les livre suivant?");
 			this.bonneReponse= ligne.getLiteral("?titre").getString();
 
 			int index=0;
@@ -43,7 +44,7 @@ public class QuestionLitterature extends Question {
 		else
 		{
 
-			this.enonce = "Qu'as �crit "+ligne.getLiteral("?titre").getString()+" ?";
+			this.enonce = new SimpleStringProperty("Qu'as écrit "+ligne.getLiteral("?titre").getString()+" ?");
 			this.bonneReponse= ligne.getLiteral("?auteur").getString();
 
 			int index=0;

@@ -22,10 +22,8 @@ public class QuestionFactory {
 						break;
 			case 6 :    question= new QuestionCoordonnees();
 						break;
-			default :   question = new QuestionFlore();
+			default :   question = new QuestionFiction();
 		}
-		//question= new QuestionChampionnatFranceFootball();
-		//question=new QuestionCapitale();
 		return question;
 	}
 	

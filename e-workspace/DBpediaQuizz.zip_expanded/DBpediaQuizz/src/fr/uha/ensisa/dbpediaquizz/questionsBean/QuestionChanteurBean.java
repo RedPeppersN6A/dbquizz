@@ -1,4 +1,4 @@
-package fr.uha.ensisa.dbpediaquizz.questions;
+package fr.uha.ensisa.dbpediaquizz.questionsBean;
 
 import java.util.List;
 
@@ -6,12 +6,13 @@ import org.apache.jena.query.QuerySolution;
 
 import fr.uha.ensisa.dbpediaquizz.util.Constantes;
 import fr.uha.ensisa.dbpediaquizz.util.DBpediaQuery;
+import javafx.beans.property.SimpleStringProperty;
 
-public class QuestionFlore extends Question {
-	
-	public QuestionFlore()
+public class QuestionChanteurBean extends QuestionBean {
+
+	public QuestionChanteurBean()
 	{
-		super(Constantes.FLORE);
+		super(Constantes.MUSIQUE);
 		//Récupère toute les chanteurs et chansons
 		String requete = "select distinct ?nomSinger ?nomSingle where {?singer <http://dbpedia.org/ontology/artist> ?single. "
 				+ "?singer <http://www.w3.org/2000/01/rdf-schema#label> ?nomSinger. "
@@ -24,7 +25,7 @@ public class QuestionFlore extends Question {
 		if(Math.random()<0.5)
 		{
 
-			this.enonce = "Qui a chanté cette chanson : "+ligne.getLiteral("?nomSingle").getString()+" ?";
+			this.enonce = new SimpleStringProperty("Qui a chanté cette chanson : "+ligne.getLiteral("?nomSingle").getString()+" ?");
 			this.bonneReponse= ligne.getLiteral("?nomSinger").getString();
 
 			int index=0;
@@ -41,7 +42,7 @@ public class QuestionFlore extends Question {
 		else
 		{
 
-			this.enonce = "Quel chanson a chanté "+ligne.getLiteral("?nomSinger").getString()+" ?";
+			this.enonce = new SimpleStringProperty("Quel chanson a chanté "+ligne.getLiteral("?nomSinger").getString()+" ?");
 			this.bonneReponse= ligne.getLiteral("?nomSingle").getString();
 
 			int index=0;
